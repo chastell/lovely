@@ -1,6 +1,6 @@
-require "../spec_helper"
-require "../../src/lovely"
-require "../../src/lovely/wrapper"
+require "./spec_helper"
+require "../src/lovely"
+require "../src/lovely/wrapper"
 
 class TestWrapper < Lovely::Wrapper
   def wrap(text, width = raise)
