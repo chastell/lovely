@@ -2,8 +2,8 @@ require "./spec_helper"
 require "../src/lovely"
 require "../src/lovely/wrapper"
 
-class TestWrapper < Lovely::Wrapper
-  def wrap(text, width = raise)
+class TestWrapper
+  def wrap(text, width)
     case
     when text == "Ice Ice Baby" && width == 7  then "Ice Ice\nBaby\n"
     when text == "Ice Ice Baby" && width == 72 then "Ice Ice Baby\n"
