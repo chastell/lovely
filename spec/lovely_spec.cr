@@ -15,12 +15,12 @@ describe Lovely do
   describe "Lovely.wrap" do
     it "offloads the wrapping to a wrapper" do
       wrapped = Lovely.wrap("Ice Ice Baby", width: 7, wrapper: TestWrapper.new)
-      expect(wrapped).must_equal("Ice Ice\nBaby\n")
+      wrapped.should eq "Ice Ice\nBaby\n"
     end
 
     it "wraps the passed String to 72 characters by default" do
       wrapped = Lovely.wrap("Ice Ice Baby", wrapper: TestWrapper.new)
-      expect(wrapped).must_equal("Ice Ice Baby\n")
+      wrapped.should eq "Ice Ice Baby\n"
     end
   end
 end
