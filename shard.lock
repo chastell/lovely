@@ -1,2 +1,10 @@
 version: 1.0
 shards:
+  mocks:
+    github: waterlink/mocks.cr
+    version: 0.9.3
+
+  singleton:
+    github: waterlink/singleton.cr
+    version: 0.1.1
+
