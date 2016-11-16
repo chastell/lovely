@@ -1,25 +1,23 @@
 require "./spec_helper"
 require "../src/lovely"
-require "../src/lovely/wrapper"
 
-class TestWrapper
-  def wrap(text, width)
-    case
-    when text == "Ice Ice Baby" && width == 7  then "Ice Ice\nBaby\n"
-    when text == "Ice Ice Baby" && width == 72 then "Ice Ice Baby\n"
-    end
-  end
+Mocks.create_double("Wrapper") do
+  mock wrap(text, width).as(String)
 end
 
 describe Lovely do
   describe "Lovely.wrap" do
     it "offloads the wrapping to a wrapper" do
-      wrapped = Lovely.wrap("Ice Ice Baby", width: 7, wrapper: TestWrapper.new)
+      wrapper = Mocks.double("Wrapper", returns(wrap("Ice Ice Baby", 7),
+                                                "Ice Ice\nBaby\n"))
+      wrapped = Lovely.wrap("Ice Ice Baby", width: 7, wrapper: wrapper)
       wrapped.should eq "Ice Ice\nBaby\n"
     end
 
     it "wraps the passed String to 72 characters by default" do
-      wrapped = Lovely.wrap("Ice Ice Baby", wrapper: TestWrapper.new)
+      wrapper = Mocks.double("Wrapper", returns(wrap("Ice Ice Baby", 72),
+                                                "Ice Ice Baby\n"))
+      wrapped = Lovely.wrap("Ice Ice Baby", wrapper: wrapper)
       wrapped.should eq "Ice Ice Baby\n"
     end
   end
