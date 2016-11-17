@@ -6,19 +6,19 @@ Mocks.create_double("Wrapper") do
 end
 
 describe Lovely do
-  describe "Lovely.wrap" do
+  describe ".wrap" do
     it "offloads the wrapping to a wrapper" do
       wrapper = Mocks.double("Wrapper", returns(wrap("Ice Ice Baby", 7),
                                                 "Ice Ice\nBaby\n"))
       wrapped = Lovely.wrap("Ice Ice Baby", width: 7, wrapper: wrapper)
-      wrapped.should eq "Ice Ice\nBaby\n"
+      expect(wrapped).must_equal("Ice Ice\nBaby\n")
     end
 
     it "wraps the passed String to 72 characters by default" do
       wrapper = Mocks.double("Wrapper", returns(wrap("Ice Ice Baby", 72),
                                                 "Ice Ice Baby\n"))
       wrapped = Lovely.wrap("Ice Ice Baby", wrapper: wrapper)
-      wrapped.should eq "Ice Ice Baby\n"
+      expect(wrapped).must_equal("Ice Ice Baby\n")
     end
   end
 end

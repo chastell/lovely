@@ -1,2 +1,4 @@
-require "mocks/spec"
-require "spec"
+require "minitest/autorun"
+require "mocks"
+
+include ::Mocks::Macro
