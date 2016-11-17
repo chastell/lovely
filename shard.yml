@@ -5,6 +5,9 @@ authors:
   - Piotr Szotkowski <chastell@chastell.net>
 
 development_dependencies:
+  minitest:
+    github: ysbaddaden/minitest.cr
+    version: ~> 0.3.0
   mocks:
     github: waterlink/mocks.cr
     version: ~> 0.9.0
