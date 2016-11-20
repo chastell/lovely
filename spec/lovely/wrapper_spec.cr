@@ -12,8 +12,8 @@ module Lovely
           – Ice is back with a brand new invention
 
           end
-        expect(Wrapper.new.wrap(short, 72)).must_equal "#{short}\n"
-        expect(Wrapper.new.wrap(long, 40)).must_equal wrap
+        __(Wrapper.new.wrap(short, 72)).must_equal "#{short}\n"
+        __(Wrapper.new.wrap(long, 40)).must_equal wrap
       end
     end
   end
