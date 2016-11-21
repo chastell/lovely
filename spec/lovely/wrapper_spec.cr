@@ -3,7 +3,7 @@ require "../../src/lovely/wrapper"
 
 module Lovely
   describe Wrapper do
-    describe "#wrap" do
+    describe "#call" do
       it "wraps the passed String to the given number of characters" do
         short = "all right: stop, collaborate and listen"
         long  = short + " – Ice is back with a brand new invention"
@@ -12,8 +12,8 @@ module Lovely
           – Ice is back with a brand new invention
 
           end
-        __(Wrapper.new.wrap(short, 72)).must_equal "#{short}\n"
-        __(Wrapper.new.wrap(long, 40)).must_equal wrap
+        __(Wrapper.new.call(short, 72)).must_equal "#{short}\n"
+        __(Wrapper.new.call(long, 40)).must_equal wrap
       end
     end
   end
