@@ -32,6 +32,15 @@ module Lovely
 
           end
       end
+
+      it "rewraps a String from zero" do
+        broken = <<-end
+          turn off
+          the lights and I’ll glow
+          end
+        wrapped = Wrapper.new.call(broken, width: 72)
+        __(wrapped).must_equal "turn off the lights and I’ll glow\n"
+      end
     end
   end
 end
