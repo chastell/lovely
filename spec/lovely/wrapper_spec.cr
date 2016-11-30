@@ -46,8 +46,9 @@ module Lovely
       it "supports all the example use-cases" do
         path = File.expand_path("wrapper_spec.yml", __DIR__)
         YAML.parse(File.open(path)).each do |spec|
-          wrap = "#{spec["output"]}\n"
-          __(Wrapper.new.call(spec["input"].to_s, width: 72)).must_equal wrap
+          width = spec["width"]? || 72
+          wrap  = "#{spec["output"]}\n"
+          __(Wrapper.new.call(spec["input"].to_s, width: width)).must_equal wrap
         end
       end
     end

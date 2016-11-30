@@ -1,3 +1,11 @@
 # returns unwrapped input if it’s short enough
 - input: ‘Etiquette’ by Sir William Schwenck Gilbert
   output: ‘Etiquette’ by Sir William Schwenck Gilbert
+
+# wraps short input if requested to wrap it shorter, avoiding hangouts
+- width: 16
+  input: ‘Etiquette’ by Sir William Schwenck Gilbert
+  output: |-
+    ‘Etiquette’ by
+    Sir William
+    Schwenck Gilbert
