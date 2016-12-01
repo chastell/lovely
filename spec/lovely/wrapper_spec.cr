@@ -5,7 +5,7 @@ require "../../src/lovely/wrapper"
 module Lovely
   describe Wrapper do
     describe "#call" do
-      it "wraps the passed String to the given number of characters" do
+      it "wraps a string to the given number of characters (72 by default)" do
         short = "all right: stop, collaborate and listen"
         long  = short + " – Ice is back with a brand new invention"
         wrap  = <<-end
@@ -13,8 +13,8 @@ module Lovely
           – Ice is back with a brand new invention
 
           end
-        __(Wrapper.new.call(short, 72)).must_equal "#{short}\n"
-        __(Wrapper.new.call(long, 40)).must_equal wrap
+        __(Wrapper.new.call(short)).must_equal "#{short}\n"
+        __(Wrapper.new.call(long, width: 40)).must_equal wrap
       end
 
       it "wraps the passed String to the given number of characters" do
@@ -39,14 +39,14 @@ module Lovely
           turn off
           the lights and I’ll glow
           end
-        wrapped = Wrapper.new.call(broken, width: 72)
+        wrapped = Wrapper.new.call(broken)
         __(wrapped).must_equal "turn off the lights and I’ll glow\n"
       end
 
       it "supports all the example use-cases" do
         path = File.expand_path("wrapper_spec.yml", __DIR__)
         YAML.parse(File.open(path)).each do |spec|
-          width = spec["width"]? || 72
+          width = spec["width"]?
           wrap  = "#{spec["output"]}\n"
           __(Wrapper.new.call(spec["input"].to_s, width: width)).must_equal wrap
         end
