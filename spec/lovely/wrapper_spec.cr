@@ -43,12 +43,17 @@ module Lovely
         __(wrapped).must_equal "turn off the lights and I’ll glow\n"
       end
 
+      struct Wrap
+        YAML.mapping(input: String, output: String, width: Int32?)
+      end
+
       it "supports all the example use-cases" do
         path = File.expand_path("wrapper_spec.yml", __DIR__)
         YAML.parse(File.open(path)).each do |spec|
-          width = spec["width"]?
-          wrap  = "#{spec["output"]}\n"
-          __(Wrapper.new.call(spec["input"].to_s, width: width)).must_equal wrap
+          wrap  = Wrap.from_yaml(spec.to_yaml)
+          width = wrap.width || 72
+          output = "#{wrap.output}\n"
+          __(Wrapper.new.call(wrap.input, width: width)).must_equal output
         end
       end
     end
