@@ -44,16 +44,16 @@ module Lovely
       end
 
       struct Wrap
-        YAML.mapping(input: String, output: String, width: Int32?)
+        YAML.mapping(input: String, output: String,
+                     width: { default: 72, type: Int32 })
       end
 
       it "supports all the example use-cases" do
         path = File.expand_path("wrapper_spec.yml", __DIR__)
         YAML.parse(File.open(path)).each do |spec|
-          wrap  = Wrap.from_yaml(spec.to_yaml)
-          width = wrap.width || 72
+          wrap   = Wrap.from_yaml(spec.to_yaml)
           output = "#{wrap.output}\n"
-          __(Wrapper.new.call(wrap.input, width: width)).must_equal output
+          __(Wrapper.new.call(wrap.input, width: wrap.width)).must_equal output
         end
       end
     end
