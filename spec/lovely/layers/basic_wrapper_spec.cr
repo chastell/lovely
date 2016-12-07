@@ -16,6 +16,32 @@ module Lovely
             end
           __(BasicWrapper.new(text, width: 22).call).must_equal wrap
         end
+
+        it "extends past the given width when necessary" do
+          text = "I’m killing your brain like a poisonous mushroom"
+          wrap = <<-end
+            I’m
+            killing
+            your
+            brain
+            like
+            a
+            poisonous
+            mushroom
+
+            end
+          __(BasicWrapper.new(text, width: 5).call).must_equal wrap
+        end
+
+        it "rewraps a String from zero" do
+          text = <<-end
+            turn off
+            the lights and I’ll glow
+
+            end
+          wrap = "turn off the lights and I’ll glow\n"
+          __(BasicWrapper.new(text).call).must_equal wrap
+        end
       end
     end
   end
