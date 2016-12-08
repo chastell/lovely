@@ -14,7 +14,7 @@ module Lovely
             with a souped-up tempo
 
             end
-          __(BasicWrapper.new(text, width: 22).call).must_equal wrap
+          __(BasicWrapper.new.call(text, width: 22)).must_equal wrap
         end
 
         it "extends past the given width when necessary" do
@@ -30,7 +30,7 @@ module Lovely
             mushroom
 
             end
-          __(BasicWrapper.new(text, width: 5).call).must_equal wrap
+          __(BasicWrapper.new.call(text, width: 5)).must_equal wrap
         end
 
         it "rewraps a String from zero" do
@@ -40,7 +40,7 @@ module Lovely
 
             end
           wrap = "turn off the lights and I’ll glow\n"
-          __(BasicWrapper.new(text).call).must_equal wrap
+          __(BasicWrapper.new.call(text)).must_equal wrap
         end
       end
     end
