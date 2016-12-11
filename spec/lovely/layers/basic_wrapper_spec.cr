@@ -42,6 +42,12 @@ module Lovely
           wrap = "turn off the lights and I’ll glow\n"
           __(BasicWrapper.new.call(text)).must_equal wrap
         end
+
+        it "passes the fixed text to the next layer and returns its outcome" do
+          spark = -> (text : String, width : Int32) { "✨ #{text} ✨" }
+          call = BasicWrapper.new(spark).call("I O U", width: 2)
+          __(call).must_equal "✨ I\nO\nU\n ✨"
+        end
       end
     end
   end
