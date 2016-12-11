@@ -11,9 +11,8 @@ module Lovely
         wrap  = <<-end
           all right: stop, collaborate and listen
           – Ice is back with a brand new invention
-
           end
-        __(Wrapper.new.call(short)).must_equal "#{short}\n"
+        __(Wrapper.new.call(short)).must_equal short
         __(Wrapper.new.call(long, width: 40)).must_equal wrap
       end
 
@@ -23,14 +22,12 @@ module Lovely
         __(Wrapper.new.call(input, width: 40)).must_equal <<-end
           something grabs a hold of me tightly;
           flow like a harpoon – daily and nightly
-
           end
         __(Wrapper.new.call(input, width: 21)).must_equal <<-end
           something grabs a
           hold of me tightly;
           flow like a harpoon –
           daily and nightly
-
           end
       end
 
@@ -40,7 +37,7 @@ module Lovely
           the lights and I’ll glow
           end
         wrapped = Wrapper.new.call(broken)
-        __(wrapped).must_equal "turn off the lights and I’ll glow\n"
+        __(wrapped).must_equal "turn off the lights and I’ll glow"
       end
 
       struct Wrap
@@ -52,7 +49,7 @@ module Lovely
         path = File.expand_path("wrapper_spec.yml", __DIR__)
         YAML.parse(File.open(path)).each do |spec|
           wrap   = Wrap.from_yaml(spec.to_yaml)
-          output = "#{wrap.output}\n"
+          output = wrap.output
           __(Wrapper.new.call(wrap.input, width: wrap.width)).must_equal output
         end
       end
