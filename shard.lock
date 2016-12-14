@@ -4,11 +4,3 @@ shards:
     github: ysbaddaden/minitest.cr
     version: 0.3.5
 
-  mocks:
-    github: waterlink/mocks.cr
-    version: 0.9.3
-
-  singleton:
-    github: waterlink/singleton.cr
-    version: 0.1.1
-

@@ -1,7 +1,4 @@
 require "minitest/autorun"
-require "mocks"
-
-include ::Mocks::Macro
 
 module Minitest
   class Spec < Test
