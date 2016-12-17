@@ -10,7 +10,7 @@ module Lovely
         long  = short + " – Ice is back with a brand new invention"
         wrap  = <<-end
           all right: stop, collaborate and listen
-          – Ice is back with a brand new invention
+          – Ice is back with a brand new invention
           end
         __(Wrapper.new.call(short)).must_equal short
         __(Wrapper.new.call(long, width: 40)).must_equal wrap
@@ -20,13 +20,13 @@ module Lovely
         input = "something grabs a hold of me tightly; " \
           "flow like a harpoon – daily and nightly"
         __(Wrapper.new.call(input, width: 40)).must_equal <<-end
-          something grabs a hold of me tightly;
-          flow like a harpoon – daily and nightly
+          something grabs a hold of me tightly;
+          flow like a harpoon – daily and nightly
           end
         __(Wrapper.new.call(input, width: 21)).must_equal <<-end
-          something grabs a
-          hold of me tightly;
-          flow like a harpoon –
+          something grabs
+          a hold of me tightly;
+          flow like a harpoon –
           daily and nightly
           end
       end
