@@ -7,7 +7,7 @@ module Lovely
       end
 
       def call(text, width)
-        next_layer.call(text, width)
+        text
       end
     end
   end
