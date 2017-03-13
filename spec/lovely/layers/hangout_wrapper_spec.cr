@@ -14,7 +14,7 @@ module Lovely
             I go crazy when I hear a cymbal
             and a hi-hat with a souped-up tempo
             end
-          __(HangoutWrapper.new.call(text, width: 35)).must_equal wrap
+          HangoutWrapper.new.call(text, width: 35).should eq wrap
         end
       end
     end

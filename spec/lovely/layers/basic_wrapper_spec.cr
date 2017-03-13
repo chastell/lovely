@@ -13,7 +13,7 @@ module Lovely
             a cymbal and a hi-hat
             with a souped-up tempo
             end
-          __(BasicWrapper.new.call(text, width: 22)).must_equal wrap
+          BasicWrapper.new.call(text, width: 22).should eq wrap
         end
 
         it "extends past the given width when necessary" do
@@ -28,7 +28,7 @@ module Lovely
             poisonous
             mushroom
             end
-          __(BasicWrapper.new.call(text, width: 5)).must_equal wrap
+          BasicWrapper.new.call(text, width: 5).should eq wrap
         end
 
         it "rewraps a String from zero" do
@@ -37,13 +37,13 @@ module Lovely
             the lights and I’ll glow
             end
           wrap = "turn off the lights and I’ll glow"
-          __(BasicWrapper.new.call(text)).must_equal wrap
+          BasicWrapper.new.call(text).should eq wrap
         end
 
         it "passes the fixed text to the next layer and returns its outcome" do
           spark = -> (text : String, width : Int32) { "✨ #{text} ✨" }
           call = BasicWrapper.new(spark).call("I O U", width: 2)
-          __(call).must_equal "✨ I\nO\nU ✨"
+          call.should eq "✨ I\nO\nU ✨"
         end
       end
     end

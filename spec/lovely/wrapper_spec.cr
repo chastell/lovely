@@ -3,6 +3,11 @@ require "../spec_helper"
 require "../../src/lovely/wrapper"
 
 module Lovely
+  struct Wrap
+    YAML.mapping(input: String, output: String,
+                  width: { default: 72, type: Int32 })
+  end
+
   describe Wrapper do
     describe "#call" do
       it "wraps a string to the given number of characters (72 by default)" do
@@ -12,18 +17,18 @@ module Lovely
           all right: stop, collaborate and listen
           – Ice is back with a brand new invention
           end
-        __(Wrapper.new.call(short)).must_equal short
-        __(Wrapper.new.call(long, width: 40)).must_equal wrap
+        Wrapper.new.call(short).should eq short
+        Wrapper.new.call(long, width: 40).should eq wrap
       end
 
       it "wraps the passed String to the given number of characters" do
         input = "something grabs a hold of me tightly; " \
           "flow like a harpoon – daily and nightly"
-        __(Wrapper.new.call(input, width: 40)).must_equal <<-end
+        Wrapper.new.call(input, width: 40).should eq <<-end
           something grabs a hold of me tightly;
           flow like a harpoon – daily and nightly
           end
-        __(Wrapper.new.call(input, width: 21)).must_equal <<-end
+        Wrapper.new.call(input, width: 21).should eq <<-end
           something grabs
           a hold of me tightly;
           flow like a harpoon –
@@ -37,12 +42,7 @@ module Lovely
           the lights and I’ll glow
           end
         wrapped = Wrapper.new.call(broken)
-        __(wrapped).must_equal "turn off the lights and I’ll glow"
-      end
-
-      struct Wrap
-        YAML.mapping(input: String, output: String,
-                     width: { default: 72, type: Int32 })
+        wrapped.should eq "turn off the lights and I’ll glow"
       end
 
       it "supports all the example use-cases" do
@@ -50,7 +50,7 @@ module Lovely
         YAML.parse(File.open(path)).each do |spec|
           wrap   = Wrap.from_yaml(spec.to_yaml)
           output = wrap.output
-          __(Wrapper.new.call(wrap.input, width: wrap.width)).must_equal output
+          Wrapper.new.call(wrap.input, width: wrap.width).should eq output
         end
       end
     end

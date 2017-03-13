@@ -8,7 +8,7 @@ module Lovely
         it "replaces spaces after one-letter words with non-break spaces" do
           text = "I go crazy when I hear a cymbal and a hi-hat"
           glue = "I go crazy when I hear a cymbal and a hi-hat"
-          __(OneLetterGluer.new.call(text, width: 42)).must_equal glue
+          OneLetterGluer.new.call(text, width: 42).should eq glue
         end
       end
     end
