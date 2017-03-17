@@ -48,10 +48,10 @@ module Lovely
 
         private def useful_fix?
           return true unless last?
-          cut = upper.chomp.rindex(/\p{Zs}/) || 0
+          cut = upper.chomp.rindex(/\p{Zs}/).not_nil!
           upper_after = upper[0...cut] + "\n"
           lower_after = upper[(cut + 1)..-1] + lower
-          lower_after.chomp.rindex(/\p{Zs}/) || 0 <= upper_after.size
+          lower_after.chomp.rindex(/\p{Zs}/).not_nil! <= upper_after.size
         end
       end
     end

@@ -16,6 +16,14 @@ module Lovely
             end
           HangoutWrapper.new.call(text, width: 35).should eq wrap
         end
+
+        it "doesn’t let the last line to hang out" do
+          text = <<-end
+            Just found out the Finnish term for grammar Nazi is pilkunnussija.
+            Direct translation: comma fucker. You’re welcome.
+            end
+          HangoutWrapper.new.call(text, width: 76).should eq text
+        end
       end
     end
   end
