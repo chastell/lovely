@@ -19,7 +19,7 @@ module Lovely
       end
 
       private def rewrapped
-        index = hangout_line.not_nil!
+        return text unless index = hangout_line
         new_lines = text.lines.dup
         new_lines[index] = new_lines[index].chomp + ' '
         unfolded = new_lines.join
