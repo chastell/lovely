@@ -51,7 +51,8 @@ module Lovely
           return true unless cut = upper.chomp.rindex(/\p{Zs}/)
           upper_after = upper[0...cut] + "\n"
           lower_after = upper[(cut + 1)..-1] + lower
-          lower_after.chomp.rindex(/\p{Zs}/).not_nil! <= upper_after.size
+          return true unless last_space = lower_after.chomp.rindex(/\p{Zs}/)
+          last_space <= upper_after.size
         end
       end
     end
