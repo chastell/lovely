@@ -20,10 +20,9 @@ module Lovely
 
       private def rewrapped
         return text unless index = hangout_line
-        new_lines = text.lines.dup
+        new_lines = text.lines
         new_lines[index] = new_lines[index] + ' '
-        unfolded = new_lines.join
-        wrapped = BasicWrapper.new.call(unfolded, width)
+        wrapped = BasicWrapper.new.call(new_lines.join, width)
         HangoutWrapper.new.call(wrapped, width)
       end
 
