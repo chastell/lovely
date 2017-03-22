@@ -21,7 +21,7 @@ module Lovely
       private def rewrapped
         return text unless index = hangout_line
         new_lines = text.lines.dup
-        new_lines[index] = new_lines[index].chomp + ' '
+        new_lines[index] = new_lines[index] + ' '
         unfolded = new_lines.join
         wrapped = BasicWrapper.new.call(unfolded, width)
         HangoutWrapper.new.call(wrapped, width)
@@ -38,8 +38,8 @@ module Lovely
         private getter upper, lower
 
         private def exists?
-          last_space = upper.chomp.rindex(/\p{Zs}/)
-          last_space && last_space >= lower.chomp.size
+          last_space = upper.rindex(/\p{Zs}/)
+          last_space && last_space >= lower.size
         end
 
         private def last?
@@ -48,10 +48,10 @@ module Lovely
 
         private def useful_fix?
           return true unless last?
-          return true unless cut = upper.chomp.rindex(/\p{Zs}/)
+          return true unless cut = upper.rindex(/\p{Zs}/)
           upper_after = upper[0...cut] + "\n"
           lower_after = upper[(cut + 1)..-1] + lower
-          return true unless last_space = lower_after.chomp.rindex(/\p{Zs}/)
+          return true unless last_space = lower_after.rindex(/\p{Zs}/)
           last_space <= upper_after.size
         end
       end
