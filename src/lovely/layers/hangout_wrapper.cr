@@ -48,10 +48,9 @@ module Lovely
         private def useful_fix?
           return true unless last?
           return true unless cut = upper.rindex(/\p{Zs}/)
-          upper_after = upper[0...cut] + "\n"
-          lower_after = upper[(cut + 1)..-1] + lower
-          return true unless last_space = lower_after.rindex(/\p{Zs}/)
-          last_space <= upper_after.size
+          final = upper[(cut + 1)..-1] + ' ' + lower
+          last_space = final.rindex(/\p{Zs}/)
+          last_space && last_space <= cut
         end
       end
     end
