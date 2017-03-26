@@ -10,6 +10,12 @@ module Lovely
           glue = "I go crazy when I hear a cymbal and a hi-hat"
           OneLetterGluer.new.call(text, width: 42).should eq glue
         end
+
+        it "glues subsequent one-letter words" do
+          text = "one-letter words in English: a, I & o"
+          glue = "one-letter words in English: a, I & o"
+          OneLetterGluer.new.call(text, width: 42).should eq glue
+        end
       end
     end
   end
