@@ -6,7 +6,7 @@ module Lovely
       def initialize(@next_layer = -> (text : String, width : Int32) { text })
       end
 
-      def call(text, width)
+      def call(text, width = 72)
         text
       end
     end
