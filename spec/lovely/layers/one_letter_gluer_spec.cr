@@ -18,8 +18,7 @@ module Lovely
         end
 
         it "passes the fixed text to the next layer and returns its outcome" do
-          spark = -> (text : String, width : Int32) { "✨ #{text} ✨" }
-          call = OneLetterGluer.new(spark).call("I O U", width: 7)
+          call = OneLetterGluer.new(Spark).call("I O U", width: 7)
           call.should eq "✨ I O U ✨"
         end
       end

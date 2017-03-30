@@ -26,8 +26,7 @@ module Lovely
         end
 
         it "passes the fixed text to the next layer and returns its outcome" do
-          spark = -> (text : String, width : Int32) { "✨ #{text} ✨" }
-          call = HangoutWrapper.new(spark).call("foobar baz\nqux", width: 7)
+          call = HangoutWrapper.new(Spark).call("foobar baz\nqux", width: 7)
           call.should eq "✨ foobar\nbaz qux ✨"
         end
       end
