@@ -1,3 +1,8 @@
 require "spec"
+require "../src/lovely/layers/layer"
 
-Spark = -> (text : String, width : Int32) { "✨ #{text} ✨" }
+class Spark < Lovely::Layers::Layer
+  def call(text, width = 72)
+    "✨ #{text} ✨"
+  end
+end
