@@ -1,7 +1,7 @@
 module Lovely
   module Layers
     class Layer
-      private getter next_layer : Layer | Layer.class | (String, Int32 -> String)
+      private getter next_layer : Layer | Layer.class
 
       def self.call(text, width = 72)
         new.call(text, width)
