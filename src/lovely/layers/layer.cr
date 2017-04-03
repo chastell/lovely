@@ -3,14 +3,14 @@ module Lovely
     class Layer
       private getter next_layer : Layer | Layer.class
 
-      def self.call(text, width = 72)
+      def self.call(text, width)
         new.call(text, width)
       end
 
       def initialize(@next_layer = Layer)
       end
 
-      def call(text, width = 72)
+      def call(text, width)
         text
       end
     end

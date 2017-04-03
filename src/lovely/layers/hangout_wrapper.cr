@@ -4,7 +4,7 @@ require "./layer"
 module Lovely
   module Layers
     class HangoutWrapper < Layer
-      def call(@text, @width = 72)
+      def call(@text, @width)
         final = hangout_line ? rewrapped : text
         next_layer.call(final, width)
       end

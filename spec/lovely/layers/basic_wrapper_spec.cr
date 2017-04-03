@@ -37,7 +37,7 @@ module Lovely
             the lights and I’ll glow
             end
           wrap = "turn off the lights and I’ll glow"
-          BasicWrapper.new.call(text).should eq wrap
+          BasicWrapper.new.call(text, width: 72).should eq wrap
         end
 
         it "passes the fixed text to the next layer and returns its outcome" do

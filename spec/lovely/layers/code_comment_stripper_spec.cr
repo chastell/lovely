@@ -10,7 +10,7 @@ module Lovely
             # take heed, ’cause I’m a lyrical poet
             # Miami’s on the scene just in case you didn’t know it
             end
-          CodeCommentStripper.new.call(text).should eq text
+          CodeCommentStripper.new.call(text, width: 72).should eq text
         end
 
         it "does not touch non-commented texts" do
@@ -18,12 +18,12 @@ module Lovely
             my town, that created all the bass sound
             enough to shake and kick holes in the ground
             end
-          CodeCommentStripper.new.call(text).should eq text
+          CodeCommentStripper.new.call(text, width: 72).should eq text
         end
 
         it "does not alter text contents" do
           text = "# Ice # Ice # Baby"
-          CodeCommentStripper.new.call(text).should eq text
+          CodeCommentStripper.new.call(text, width: 72).should eq text
         end
       end
     end
