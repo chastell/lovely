@@ -9,8 +9,6 @@ module Lovely
         next_layer.call(final, width)
       end
 
-      private getter text = "", width = 72
-
       private def hangout_line
         text.lines.each_cons(2).with_index do |(upper, lower), index|
           finder = HangoutFinder.new(upper, lower, index == text.lines.size - 2)

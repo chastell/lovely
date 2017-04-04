@@ -2,6 +2,8 @@ module Lovely
   module Layers
     class Layer
       private getter next_layer : Layer | Layer.class
+      private getter text = ""
+      private getter width = 72
 
       def self.call(text, width)
         new.call(text, width)
