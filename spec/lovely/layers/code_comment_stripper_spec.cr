@@ -37,6 +37,18 @@ module Lovely
             end
           CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
         end
+
+        it "only considers homogenous characters as comments" do
+          commented = <<-end
+            # /if there was a problem,
+            # yo – I’ll solve it!/
+            end
+          sparked = <<-end
+            # ✨ /if there was a problem,
+            # yo – I’ll solve it!/ ✨
+            end
+          CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
+        end
       end
     end
   end
