@@ -49,6 +49,12 @@ module Lovely
             end
           CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
         end
+
+        it "strips initial space indentation" do
+          commented = "  // check out the hook"
+          sparked   = "  // ✨ check out the hook ✨"
+          CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
+        end
       end
     end
   end
