@@ -55,6 +55,12 @@ module Lovely
           sparked   = "  // ✨ check out the hook ✨"
           CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
         end
+
+        it "strips initial tab indentation" do
+          commented = "\t# while my DJ revolves it"
+          sparked   = "\t# ✨ while my DJ revolves it ✨"
+          CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
+        end
       end
     end
   end
