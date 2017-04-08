@@ -61,6 +61,12 @@ module Lovely
           sparked   = "\t# ✨ while my DJ revolves it ✨"
           CodeCommentStripper.new(Spark).call(commented, 72).should eq sparked
         end
+
+        it "pays proper homage to K&R" do
+          defined = "#define ASSERT(msg, cond) // TODO"
+          sparked = "✨ #define ASSERT(msg, cond) // TODO ✨"
+          CodeCommentStripper.new(Spark).call(defined, 72).should eq sparked
+        end
       end
     end
   end
