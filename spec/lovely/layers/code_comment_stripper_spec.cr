@@ -1,10 +1,25 @@
 require "../../spec_helper"
+require "../../../src/lovely/layers/basic_wrapper"
 require "../../../src/lovely/layers/code_comment_stripper"
 
 module Lovely
   module Layers
     describe CodeCommentStripper do
       describe "#call" do
+        it "strips comments and adjusts width before calling the next layer" do
+          commented = <<-end
+            # to the extreme I rock a mic like a vandal
+            # light up a stage and wax a chump like a candle
+            end
+          rewrapped = <<-end
+            # to the extreme I rock a mic
+            # like a vandal light up a stage
+            # and wax a chump like a candle
+            end
+          stripper = CodeCommentStripper.new(BasicWrapper)
+          stripper.call(commented, 32).should eq rewrapped
+        end
+
         it "adds comments back in (and adjusts width) before returning" do
           text = <<-end
             # take heed, ’cause I’m a lyrical poet
