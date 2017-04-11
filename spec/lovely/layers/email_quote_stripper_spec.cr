@@ -25,6 +25,14 @@ module Lovely
           plain = "> Ice > Ice > Baby"
           EmailQuoteStripper.new.call(plain, 72).should eq plain
         end
+
+        it "strips multilevel quotes" do
+          quoted = <<-end
+            >> ’cause my style’s like a chemical spill
+            >> feasible rhymes that you can vision and feel
+            end
+          EmailQuoteStripper.new.call(quoted, 72).should eq quoted
+        end
       end
     end
   end
