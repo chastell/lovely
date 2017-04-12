@@ -33,6 +33,20 @@ module Lovely
             end
           EmailQuoteStripper.new.call(quoted, 72).should eq quoted
         end
+
+        it "fixes broken quotes when adding them back in" do
+          quoted = <<-end
+            > > >Shay plays on the fade,
+            > > >slice like a ninja
+            > > >cut like a razor blade
+            end
+          fixed = <<-end
+            >>> Shay plays on the fade,
+            >>> slice like a ninja
+            >>> cut like a razor blade
+            end
+          EmailQuoteStripper.new.call(quoted, 72).should eq fixed
+        end
       end
     end
   end
