@@ -1,10 +1,25 @@
 require "../../spec_helper"
+require "../../../src/lovely/layers/basic_wrapper"
 require "../../../src/lovely/layers/email_quote_stripper"
 
 module Lovely
   module Layers
     describe EmailQuoteStripper do
       describe "#call" do
+        it "strips quotes and adjusts width before calling the next layer" do
+          quoted = <<-end
+            > to the extreme I rock a mic like a vandal
+            > light up a stage and wax a chump like a candle
+            end
+          rewrapped = <<-end
+            > to the extreme I rock a mic
+            > like a vandal light up a stage
+            > and wax a chump like a candle
+            end
+          stripper = EmailQuoteStripper.new(BasicWrapper)
+          stripper.call(quoted, 33).should eq rewrapped
+        end
+
         it "adds quotes back in (and adjusts width) before returning" do
           quoted = <<-end
             > take heed, ’cause I’m a lyrical poet
