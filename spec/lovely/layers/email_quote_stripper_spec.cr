@@ -49,6 +49,18 @@ module Lovely
           EmailQuoteStripper.new.call(quoted, 72).should eq quoted
         end
 
+        it "strips broken quotes properly" do
+          quoted = <<-end
+            > > >conducted and formed this is a hell of a concept
+            > > >we make it hype and you want to step with this
+            end
+          fixed = <<-end
+            >>> conducted and formed this is a hell of a concept
+            >>> we make it hype and you want to step with this
+            end
+          EmailQuoteStripper.new.call(quoted, 72).should eq fixed
+        end
+
         it "fixes broken quotes when adding them back in" do
           quoted = <<-end
             > > >Shay plays on the fade,
