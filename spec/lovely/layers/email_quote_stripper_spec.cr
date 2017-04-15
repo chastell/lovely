@@ -74,6 +74,14 @@ module Lovely
             end
           EmailQuoteStripper.new.call(quoted, 72).should eq fixed
         end
+
+        it "only considers homogenous characters as comments" do
+          quoted = <<-end
+            > /if there was a problem,
+            > yo – I’ll solve it!/
+            end
+        EmailQuoteStripper.new.call(quoted, 72).should eq quoted
+        end
       end
     end
   end
