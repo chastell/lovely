@@ -1,10 +1,8 @@
-require "./layer"
+require "./quote_stripper"
 
 module Lovely
   module Layers
-    class EmailQuoteStripper < Layer
-      QUOTES = /^>[> ]*/
-
+    class EmailQuoteStripper < QuoteStripper
       def call(text, width)
         wrapped = next_layer.call(stripped(text), width - quote(text).size)
         wrapped.lines.map { |line| fixed_quote(quote(text)) + line }.join("\n")
@@ -14,13 +12,8 @@ module Lovely
         quote.empty? ? "" : quote.delete(' ') + ' '
       end
 
-      private def quote(text)
-        starts = text.lines.map { |line| line[QUOTES]? }.uniq
-        starts.size == 1 ? starts.first || "" : ""
-      end
-
-      private def stripped(text)
-        text.lines.map { |line| line[quote(text).size..-1] }.join("\n")
+      private def quotes
+        /^>[> ]*/
       end
     end
   end
