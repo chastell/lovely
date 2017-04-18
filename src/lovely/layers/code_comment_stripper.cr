@@ -5,7 +5,11 @@ module Lovely
     class CodeCommentStripper < QuoteStripper
       def call(@text, @width)
         wrapped = next_layer.call(stripped, width - quote.size)
-        wrapped.lines.map { |line| quote + line }.join("\n")
+        wrapped.lines.map { |line| fixed_quote + line }.join("\n")
+      end
+
+      private def fixed_quote
+        quote
       end
 
       private def quotes
