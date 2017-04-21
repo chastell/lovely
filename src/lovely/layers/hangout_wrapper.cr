@@ -18,8 +18,10 @@ module Lovely
 
       private def rewrapped
         return text unless index = hangout_line
-        new_lines = text.lines
-        new_lines[index] = new_lines[index] + ' '
+        new_lines = text.lines.map_with_index do |line, i|
+          glue = i == index ? ' ' : ' '
+          line + glue
+        end
         wrapped = BasicWrapper.new.call(new_lines.join, width)
         HangoutWrapper.new.call(wrapped, width)
       end
