@@ -31,8 +31,8 @@ module Lovely
         Wrapper.new.call(input, width: 21).should eq <<-end
           something grabs
           a hold of me tightly;
-          flow like a harpoon –
-          daily and nightly
+          flow like a harpoon
+          – daily and nightly
           end
       end
 
