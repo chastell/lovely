@@ -6,7 +6,7 @@ require "./layers/one_letter_gluer"
 module Lovely
   class Wrapper
     def call(text, width = 72)
-      stack.call(text, width: width)
+      stack.call(text, width: width).tr(" ", " ")
     end
 
     private def stack

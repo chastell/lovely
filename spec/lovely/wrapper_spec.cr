@@ -15,7 +15,7 @@ module Lovely
         long  = short + " – Ice is back with a brand new invention"
         wrap  = <<-end
           all right: stop, collaborate and listen
-          – Ice is back with a brand new invention
+          – Ice is back with a brand new invention
           end
         Wrapper.new.call(short).should eq short
         Wrapper.new.call(long, width: 40).should eq wrap
@@ -25,14 +25,14 @@ module Lovely
         input = "something grabs a hold of me tightly; " \
           "flow like a harpoon – daily and nightly"
         Wrapper.new.call(input, width: 40).should eq <<-end
-          something grabs a hold of me tightly;
-          flow like a harpoon – daily and nightly
+          something grabs a hold of me tightly;
+          flow like a harpoon – daily and nightly
           end
         Wrapper.new.call(input, width: 21).should eq <<-end
           something grabs
-          a hold of me tightly;
-          flow like a harpoon
-          – daily and nightly
+          a hold of me tightly;
+          flow like a harpoon
+          – daily and nightly
           end
       end
 
