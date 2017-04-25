@@ -12,8 +12,8 @@ module Lovely
     end
 
     private def stack
-      layers = [Layers::OneLetterGluer, Layers::BasicWrapper,
-                Layers::HangoutWrapper]
+      layers = [Layers::EmailQuoteStripper, Layers::OneLetterGluer,
+                Layers::BasicWrapper, Layers::HangoutWrapper]
       layers.reverse.reduce(Layers::Layer) { |inner, outer| outer.new(inner) }
     end
   end
