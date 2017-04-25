@@ -6,7 +6,9 @@ require "./layers/one_letter_gluer"
 module Lovely
   class Wrapper
     def call(text, width = 72)
-      stack.call(text, width: width).tr(" ", " ")
+      text.split("\n\n").map do |line|
+        stack.call(line, width: width).tr(" ", " ")
+      end.join("\n\n")
     end
 
     private def stack
