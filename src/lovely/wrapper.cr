@@ -7,7 +7,7 @@ module Lovely
   class Wrapper
     def call(text, width = 72)
       text.split("\n\n").map do |line|
-        stack.call(line, width: width).tr(" ", " ")
+        stack.call(line, width: width).tr(NBSP.to_s, " ")
       end.join("\n\n")
     end
 
