@@ -1,6 +1,8 @@
 module Lovely
   module Layers
     class Layer
+      NBSP = ' '
+
       private getter next_layer : Layer | Layer.class
       private getter text = ""
       private getter width = 72
