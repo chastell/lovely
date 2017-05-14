@@ -1,4 +1,5 @@
 require "./layers/basic_wrapper"
+require "./layers/email_quote_stripper"
 require "./layers/hangout_wrapper"
 require "./layers/layer"
 require "./layers/one_letter_gluer"
