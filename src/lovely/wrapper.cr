@@ -9,7 +9,7 @@ module Lovely
     NBSP = ' '
 
     def call(text, width = 72)
-      text.split("\n\n").map do |line|
+      text.split(/^>* *\n/m).map do |line|
         stack.call(line, width: width).tr(NBSP.to_s, " ")
       end.join("\n\n")
     end
