@@ -12,7 +12,7 @@ module Lovely
             end
           wrap = <<-end
             I go crazy when I hear a cymbal
-            and a hi-hat with a souped-up tempo
+            and a hi-hat with a souped-up tempo
             end
           HangoutWrapper.new.call(text, width: 35).should eq wrap
         end
@@ -27,7 +27,7 @@ module Lovely
 
         it "passes the fixed text to the next layer and returns its outcome" do
           call = HangoutWrapper.new(Spark).call("foobar baz\nqux", width: 7)
-          call.should eq "✨ foobar\nbaz qux ✨"
+          call.should eq "✨ foobar\nbaz qux ✨"
         end
       end
     end

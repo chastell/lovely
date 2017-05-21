@@ -6,7 +6,7 @@ module Lovely
     class HangoutWrapper < Layer
       def call(@text, @width)
         final = hangout_line ? rewrapped : text
-        next_layer.call(final, width)
+        next_layer.call(final.tr(NBSP.to_s, " "), width)
       end
 
       private def hangout_line
