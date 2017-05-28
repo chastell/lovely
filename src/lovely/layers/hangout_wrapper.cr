@@ -4,6 +4,8 @@ require "./layer"
 module Lovely
   module Layers
     class HangoutWrapper < Layer
+      private SPACE = /\p{Zs}/
+
       def call(@text, @width)
         final = hangout_line ? rewrapped : text
         next_layer.call(final.tr(NBSP.to_s, " "), width)
@@ -37,7 +39,7 @@ module Lovely
         private getter upper, lower
 
         private def exists?
-          last_space = upper.rindex(/\p{Zs}/)
+          last_space = upper.rindex(SPACE)
           last_space && last_space >= lower.size
         end
 
@@ -47,9 +49,9 @@ module Lovely
 
         private def useful_fix?
           return true unless last?
-          return true unless cut = upper.rindex(/\p{Zs}/)
+          return true unless cut = upper.rindex(SPACE)
           final = upper[(cut + 1)..-1] + ' ' + lower
-          last_space = final.rindex(/\p{Zs}/)
+          last_space = final.rindex(SPACE)
           last_space && last_space <= cut
         end
       end
