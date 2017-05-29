@@ -1,7 +1,7 @@
 module Lovely
   module Layers
     class Layer
-      NBSP = ' '
+      private NBSP = ' '
 
       private getter next_layer : Layer | Layer.class
       private getter text = ""
