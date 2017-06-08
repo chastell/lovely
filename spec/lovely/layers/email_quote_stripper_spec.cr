@@ -80,7 +80,7 @@ module Lovely
             > /if there was a problem,
             > yo – I’ll solve it!/
             end
-        EmailQuoteStripper.new.call(quoted, 72).should eq quoted
+          EmailQuoteStripper.new.call(quoted, 72).should eq quoted
         end
       end
     end
