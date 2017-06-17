@@ -51,8 +51,8 @@
     island were eventually cast.
     They hunted for their meals,
     as ALEXANDER SELKIRK used, But
-    they couldn’t chat together —
-    they had not been introduced.
+    they couldn’t chat together
+    — they had not been introduced.
 
 # multiple paragraphs are wrapped independently
 - input: |-
@@ -126,8 +126,8 @@
   output: |-
     >> How they wished an introduction to each other they had had
     >> When on board The Ballyshannon! And it drove them nearly
-    >> mad To think how very friendly with each other they might
-    >> get, If it wasn’t for the arbitrary rule of etiquette!
+    >> mad To think how very friendly with each other they
+    >> might get, If it wasn’t for the arbitrary rule of etiquette!
 
     > One day, when out a-hunting for the mus ridiculus, GRAY overheard his
     > fellow-man soliloquising thus: ‘I wonder how the playmates of my youth
@@ -156,9 +156,9 @@
     // hummed and hawed a bit, then cleared his throat, and said:
 
     # ‘I beg your pardon—pray forgive me if I seem too bold,
-    # But you have breathed a name I knew familiarly of old. You
-    # spoke aloud of ROBINSON – I happened to be by— You know
-    # him?’ ‘Yes, extremely well.’ ‘Allow me – so do I!’
+    # But you have breathed a name I knew familiarly of old.
+    # You spoke aloud of ROBINSON – I happened to be by— You
+    # know him?’ ‘Yes, extremely well.’ ‘Allow me – so do I!’
 
     It was enough: they felt they could more sociably get on,
     For (ah, the magic of the fact!) they each knew ROBINSON!

@@ -11,10 +11,21 @@ module Lovely
         next_layer.call(final.tr(NBSP.to_s, " "), width)
       end
 
+      private def hangout?(line, context, verify = false)
+        return false unless line_last_space = line.rindex(SPACE)
+        return line_last_space >= context.size unless verify
+        glued = line[(line_last_space + 1)..-1] + ' ' + context
+        glued.rindex(SPACE).not_nil! < line_last_space
+      end
+
       private def hangout_line
         text.lines.each_cons(2).with_index do |(upper, lower), index|
-          finder = HangoutFinder.new(upper, lower, index == text.lines.size - 2)
-          return index if finder.hangout?
+          if index == text.lines.size - 2
+            return index if hangout?(line: upper, context: lower, verify: true)
+          else
+            return index     if hangout?(line: upper, context: lower)
+            return index + 1 if hangout?(line: lower, context: upper)
+          end
         end
       end
 
@@ -26,34 +37,6 @@ module Lovely
         end
         wrapped = BasicWrapper.new.call(new_lines.join, width)
         HangoutWrapper.new.call(wrapped, width)
-      end
-
-      private class HangoutFinder
-        def initialize(@upper : String, @lower : String, @last : Bool)
-        end
-
-        def hangout?
-          exists? && useful_fix?
-        end
-
-        private getter upper, lower
-
-        private def exists?
-          last_space = upper.rindex(SPACE)
-          last_space && last_space >= lower.size
-        end
-
-        private def last?
-          @last
-        end
-
-        private def useful_fix?
-          return true unless last?
-          return true unless cut = upper.rindex(SPACE)
-          final = upper[(cut + 1)..-1] + ' ' + lower
-          last_space = final.rindex(SPACE)
-          last_space && last_space <= cut
-        end
       end
     end
   end

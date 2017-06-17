@@ -29,6 +29,22 @@ module Lovely
           call = HangoutWrapper.new(Spark).call("foobar baz\nqux", width: 7)
           call.should eq "✨ foobar\nbaz qux ✨"
         end
+
+        it "recognises hangouts in lower lines" do
+          text = <<-end
+            ‘I beg your pardon—pray forgive me if I seem too bold,
+            But you have breathed a name I knew familiarly of old. You
+            spoke aloud of ROBINSON – I happened to be by— You know
+            him?’ ‘Yes, extremely well.’ ‘Allow me – so do I!’
+            end
+          wrap = <<-end
+            ‘I beg your pardon—pray forgive me if I seem too bold,
+            But you have breathed a name I knew familiarly of old.
+            You spoke aloud of ROBINSON – I happened to be by— You
+            know him?’ ‘Yes, extremely well.’ ‘Allow me – so do I!’
+            end
+          HangoutWrapper.new.call(text, width: 72).should eq wrap
+        end
       end
     end
   end
