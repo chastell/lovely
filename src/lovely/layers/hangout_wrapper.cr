@@ -23,7 +23,7 @@ module Lovely
           if index == text.lines.size - 2
             return index if hangout?(line: upper, context: lower, verify: true)
           else
-            return index     if hangout?(line: upper, context: lower)
+            return index if hangout?(line: upper, context: lower)
             return index + 1 if hangout?(line: lower, context: upper)
           end
         end
