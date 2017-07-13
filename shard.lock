@@ -1,6 +1,0 @@
-version: 1.0
-shards:
-  stdio:
-    github: mosop/stdio
-    version: 0.1.3
-

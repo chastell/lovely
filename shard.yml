@@ -3,8 +3,3 @@ version: 0.0.0
 license: AGPL-3.0
 authors:
   - Piotr Szotkowski <chastell@chastell.net>
-
-development_dependencies:
-  stdio:
-    github: mosop/stdio
-    version: ~> 0.1.3
