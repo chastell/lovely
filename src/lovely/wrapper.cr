@@ -7,11 +7,9 @@ require "./layers/one_letter_gluer"
 
 module Lovely
   class Wrapper
-    private NBSP = ' '
-
     def call(text, width = 72)
       text.split(/^[\/#>]* *\n/m).map do |line|
-        stack.call(line, width: width).tr(NBSP.to_s, " ")
+        stack.call(line, width: width).tr("\u00A0", " ")
       end.join("\n\n")
     end
 
