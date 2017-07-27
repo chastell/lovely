@@ -47,10 +47,8 @@ module Lovely
 
       it "supports all the example use-cases" do
         path = File.expand_path("wrapper_spec.yml", __DIR__)
-        YAML.parse(File.open(path)).each do |spec|
-          wrap = Wrap.from_yaml(spec.to_yaml)
-          output = wrap.output
-          Wrapper.new.call(wrap.input, width: wrap.width).should eq output
+        Array(Wrap).from_yaml(File.open(path)).each do |wrap|
+          Wrapper.new.call(wrap.input, width: wrap.width).should eq wrap.output
         end
       end
     end
