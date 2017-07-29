@@ -2,8 +2,8 @@ require "./wrapper"
 
 module Lovely
   class CLI
-    def wrap(text, width)
-      Wrapper.new.call(text.to_s, width: width)
+    def wrap(input, output, width)
+      output.puts Wrapper.new.call(input.to_s, width: width)
     end
   end
 end
