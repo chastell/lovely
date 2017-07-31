@@ -7,7 +7,7 @@ module Lovely
       it "wraps the input to the given width and prints to output" do
         input = IO::Memory.new("Ice Ice Baby\n")
         output = IO::Memory.new
-        wrapped = CLI.new.wrap(input: input, output: output, width: 7)
+        wrapped = CLI.new(input: input, output: output, width: 7).wrap
         output.to_s.should eq "Ice Ice\nBaby\n"
       end
     end
