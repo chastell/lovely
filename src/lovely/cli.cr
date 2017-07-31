@@ -4,9 +4,15 @@ module Lovely
   class CLI
     private getter input : IO
     private getter output : IO
-    private getter width = 72
+    private getter width : Int32
 
-    def initialize(@input, @output, @width)
+    def initialize(@input, @output, args)
+      @width = 72
+      OptionParser.parse(args) do |parser|
+        parser.on("-w", "--width=NUMBER", "Wrapping width") do |width|
+          @width = width.to_i
+        end
+      end
     end
 
     def wrap
