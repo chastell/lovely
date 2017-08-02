@@ -6,7 +6,7 @@ module Lovely
     private getter output : IO
     private getter width : Int32
 
-    def initialize(@input, @output, args)
+    def initialize(args, @input, @output)
       @width = 72
       OptionParser.parse(args) do |parser|
         parser.on("-w", "--width=NUMBER", "Wrapping width") do |width|
