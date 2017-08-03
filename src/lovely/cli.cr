@@ -1,3 +1,4 @@
+require "option_parser"
 require "./wrapper"
 
 module Lovely
