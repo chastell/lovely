@@ -17,7 +17,7 @@ module Lovely
     end
 
     def wrap
-      output.puts Wrapper.new.call(input.to_s, width: width)
+      output.puts Wrapper.new.call(input.gets_to_end, width: width)
     end
   end
 end
