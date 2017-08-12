@@ -7,13 +7,13 @@ module Lovely
       it "prints help on --help and -h" do
         input = IO::Memory.new("")
         output = IO::Memory.new
-        wrapped = CLI.new(%w[--help], input: input, output: output)
         usage = <<-end
           Usage: lovely [options]
               -h, --help                       Show this help
               -w, --width=NUMBER               Wrapping width
 
           end
+        CLI.new(%w[--help], input: input, output: output)
         output.to_s.should eq usage
       end
     end
