@@ -19,10 +19,17 @@ module Lovely
     end
 
     describe "#wrap" do
-      it "wraps the input to the given width and prints to output" do
+      it "wraps the input to the given -w and prints to output" do
         input = IO::Memory.new("Ice Ice Baby\n")
         output = IO::Memory.new
         wrapped = CLI.new(%w[-w 7], input: input, output: output).wrap
+        output.to_s.should eq "Ice Ice\nBaby\n"
+      end
+
+      it "wraps the input to the given --width and prints to output" do
+        input = IO::Memory.new("Ice Ice Baby\n")
+        output = IO::Memory.new
+        wrapped = CLI.new(%w[--width=7], input: input, output: output).wrap
         output.to_s.should eq "Ice Ice\nBaby\n"
       end
     end
