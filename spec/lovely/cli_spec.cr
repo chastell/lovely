@@ -5,7 +5,7 @@ module Lovely
   describe CLI do
     describe ".new" do
       it "prints help on -h and --help" do
-        ["-h", "--help"].each do |flag|
+        %w[-h --help].each do |flag|
           input = IO::Memory.new("")
           output = IO::Memory.new
           usage = <<-end
