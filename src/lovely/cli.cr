@@ -11,7 +11,10 @@ module Lovely
       @width = 72
       OptionParser.parse(args) do |parser|
         parser.banner = "Usage: lovely [options]"
-        parser.on("-h", "--help", "Show this help") { output.puts parser }
+        parser.on("-h", "--help", "Show this help") do
+          output.puts parser
+          exit
+        end
         parser.on("-w", "--width=NUMBER", "Wrapping width") do |width|
           @width = width.to_i
         end
