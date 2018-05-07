@@ -4,4 +4,7 @@ build:
 format:
 	crystal tool format
 
-.PHONY: build format
+test:
+	crystal spec && bin/ameba
+
+.PHONY: build format test
