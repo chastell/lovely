@@ -1,3 +1,4 @@
 .crystal
 .shards
+bin/ameba
 lib
